@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "estudiante")
+//@Table(name = "estudiante")
 public class Estudiante {
     @Id
     private int dni;
@@ -26,7 +26,7 @@ public class Estudiante {
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Inscripcion> inscripciones;
 
-    public Estudiante(){
+    public Estudiante() {
         super();
     }
 
@@ -50,8 +50,65 @@ public class Estudiante {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getApellido() {
         return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public char getGenero() {
+        return genero;
+    }
+
+    public void setGenero(char genero) {
+        this.genero = genero;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public int getNumeroLegajo() {
+        return numeroLegajo;
+    }
+
+    public void setNumeroLegajo(int numeroLegajo) {
+        this.numeroLegajo = numeroLegajo;
+    }
+
+    public Set<Inscripcion> getInscripciones() {
+        Set<Inscripcion> result = new HashSet<>(this.inscripciones);
+        return result;
+    }
+
+    public void addInscripcion(Inscripcion inscripcion) {
+        this.inscripciones.add(inscripcion);
     }
 
     @Override

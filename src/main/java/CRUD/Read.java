@@ -30,17 +30,6 @@ public class Read {
         return result;
     }
 
-    public List<Carrera> getCarreras() {
-        EntityManager em = JPAController.getEntityManager();
-        @SuppressWarnings("unchecked")
-        List<Carrera> result = em.createQuery(  "SELECT nombre AS carrera, sum(id_estudiante) AS inscriptos " +
-                                                "FROM inscripcion NATURAL JOIN carrera" +
-                                                "GROUP BY nombre " +
-                                                "HAVING inscriptos > 0" +
-                                                "ORDER BY inscriptos DESC").getResultList();
-        return result;
-    }
-
     public List<Estudiante> getEstudiantesPorGenero(char genero) {
         EntityManager em = JPAController.getEntityManager();
         @SuppressWarnings("unchecked")
