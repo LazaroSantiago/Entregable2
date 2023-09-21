@@ -5,11 +5,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "carrera")
+//@Table(name = "carrera")
 public class Carrera {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int id_carrera;
 
     @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Inscripcion> inscripciones;
@@ -21,14 +21,13 @@ public class Carrera {
         super();
     }
 
-    public Carrera(int id, String nombre) {
-        this.id = id;
+    public Carrera(String nombre) {
         this.nombre = nombre;
         this.inscripciones = new HashSet<>();
     }
 
-    public Carrera(int id, Set<Inscripcion> inscripciones, String nombre) {
-        this(id, nombre);
+    public Carrera(Set<Inscripcion> inscripciones, String nombre) {
+        this(nombre);
         this.inscripciones = new HashSet<>(inscripciones);
     }
 }

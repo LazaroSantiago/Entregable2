@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @Entity
-@Table(name = "inscripcion")
+//@Table(name = "inscripcion")
 public class Inscripcion {
     @ManyToOne
     @JoinColumn(name = "id_estudiante")

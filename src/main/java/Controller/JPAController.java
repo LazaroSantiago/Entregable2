@@ -22,6 +22,9 @@ public class JPAController {
     }
 
     public static EntityManager getEntityManager() {
+        if (instance==null)
+            startConnection();
+
         return entityManager;
     }
 
@@ -34,10 +37,6 @@ public class JPAController {
         T result = entityManager.find(tClass, o);
         this.closeConnection();
         return result;
-    }
-
-    public void delete(Object o) {
-        entityManager.remove(o);
     }
 
     public void closeConnection() {
