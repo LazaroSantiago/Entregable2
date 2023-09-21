@@ -31,5 +31,4 @@ public class Carrera {
         this(id, nombre);
         this.inscripciones = new HashSet<>(inscripciones);
     }
-
 }
