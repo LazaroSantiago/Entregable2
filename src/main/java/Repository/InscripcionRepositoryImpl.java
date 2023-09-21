@@ -1,6 +1,6 @@
 package Repository;
 
-import Controller.JPAController;
+import Helper.ConnectionHelper;
 import Entity.Carrera;
 import Entity.Estudiante;
 import Entity.Inscripcion;
@@ -12,15 +12,14 @@ public class InscripcionRepositoryImpl implements InscripcionRepository{
 
     public InscripcionRepositoryImpl(){
         super();
-        this.entityManager = JPAController.getEntityManager();
+        this.entityManager = ConnectionHelper.refresh();
     }
 
     @Override
     public void inscribirEstudiante(Estudiante e, Carrera c) {
         Inscripcion i = new Inscripcion(e,c);
-        entityManager.persist(i);
+        entityManager.merge(i);
         entityManager.getTransaction().commit();
-        entityManager.close();
     }
 
 }

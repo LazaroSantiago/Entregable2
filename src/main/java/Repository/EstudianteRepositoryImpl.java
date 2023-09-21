@@ -1,6 +1,6 @@
 package Repository;
 
-import Controller.JPAController;
+import Helper.ConnectionHelper;
 import DTO.EstudianteDTO;
 import Entity.Estudiante;
 
@@ -12,7 +12,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
     public EstudianteRepositoryImpl() {
         super();
-        this.entityManager = JPAController.getEntityManager();
+        this.entityManager = ConnectionHelper.refresh();
     }
 
     @Override
@@ -27,7 +27,6 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
                 e.getCiudad(),
                 e.getGenero(),
                 e.getNumeroLegajo());
-        entityManager.close();
         return result;
     }
 
@@ -64,9 +63,15 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
     }
 
     @Override
-    public void borrarEstudiante(int numeroLegajo) {
+    public void borrarEstudiantePorNumeroLegajo(int numeroLegajo) {
         Estudiante e = this.entityManager.find(Estudiante.class, numeroLegajo);
         this.entityManager.remove(e);
-        entityManager.close();
+    }
+
+    @Override
+    public void agregarEstudiante(Estudiante e) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(e);
+        entityManager.getTransaction().commit();
     }
 }

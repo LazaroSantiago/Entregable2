@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@Table(name = "carrera")
 public class Carrera {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +21,7 @@ public class Carrera {
     }
 
     public Carrera(String nombre) {
+        super();
         this.nombre = nombre;
         this.inscripciones = new HashSet<>();
     }
@@ -29,5 +29,26 @@ public class Carrera {
     public Carrera(Set<Inscripcion> inscripciones, String nombre) {
         this(nombre);
         this.inscripciones = new HashSet<>(inscripciones);
+    }
+
+    public int getId_carrera() {
+        return id_carrera;
+    }
+
+    public Set<Inscripcion> getInscripciones() {
+        Set<Inscripcion> result = new HashSet<>(inscripciones);
+        return result;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void addInscripcion(Inscripcion inscripcion) {
+        this.inscripciones.add(inscripcion);
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

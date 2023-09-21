@@ -5,10 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@Table(name = "estudiante")
 public class Estudiante {
     @Id
-    private int dni;
+    private int numeroLegajo;
 
     @Column
     private String nombre;
@@ -20,8 +19,8 @@ public class Estudiante {
     private char genero;
     @Column
     private String ciudad;
-    @Column
-    private int numeroLegajo;
+    @Column(unique = true)
+    private int dni;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Inscripcion> inscripciones;

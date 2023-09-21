@@ -1,27 +1,34 @@
 package Entity;
 
+
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
 
 @Entity
-//@Table(name = "inscripcion")
 public class Inscripcion {
-    @ManyToOne
-    @JoinColumn(name = "id_estudiante")
+    @ManyToOne( cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinColumn(name = "legajo_estudiante")
     Estudiante estudiante;
 
-    @ManyToOne
+    @ManyToOne( cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinColumn(name = "id_carrera")
     Carrera carrera;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long id_inscripcion;
 
-    @Column
+    @Column(name = "fecha_de_inicio")
     private LocalDate fechaInicio;
-    @Column
+    @Column(name = "es_graduado")
     private boolean esGraduado = false;
 
     private Inscripcion() {
@@ -40,12 +47,12 @@ public class Inscripcion {
         return p.getYears();
     }
 
-    public long getId() {
-        return id;
+    public long getId_inscripcion() {
+        return id_inscripcion;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId_inscripcion(long id_inscripcion) {
+        this.id_inscripcion = id_inscripcion;
     }
 
     public Estudiante getEstudiante() {

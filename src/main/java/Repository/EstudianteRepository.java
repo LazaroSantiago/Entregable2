@@ -1,6 +1,7 @@
 package Repository;
 
 import DTO.EstudianteDTO;
+import Entity.Estudiante;
 
 import java.util.List;
 
@@ -9,5 +10,6 @@ public interface EstudianteRepository {
     List<EstudianteDTO> getEstudiantes();
     List<EstudianteDTO> getEstudiantesAscendente();
     List<EstudianteDTO> getEstudiantesPorGenero(char genero);
-    void borrarEstudiante(int numeroLegajo);
+    void borrarEstudiantePorNumeroLegajo(int numeroLegajo);
+    void agregarEstudiante(Estudiante e);
 }
