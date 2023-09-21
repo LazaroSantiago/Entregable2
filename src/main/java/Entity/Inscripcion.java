@@ -19,7 +19,9 @@ public class Inscripcion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column
     private LocalDate fechaInicio;
+    @Column
     private boolean esGraduado = false;
 
     private Inscripcion() {

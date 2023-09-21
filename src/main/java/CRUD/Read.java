@@ -40,4 +40,37 @@ public class Read {
                                                 "ORDER BY inscriptos DESC").getResultList();
         return result;
     }
+
+    public List<Estudiante> getEstudiantesPorGenero(char genero) {
+        EntityManager em = JPAController.getEntityManager();
+        @SuppressWarnings("unchecked")
+        List<Estudiante> result = em.createQuery("SELECT e FROM estudiante e WHERE e.genero LIKE :VarGenero")
+                .setParameter("VarGenero", genero)
+                .getResultList();
+        return result;
+    }
+
+    public List<Estudiante> getEstudiantesPorCarreraYCiudad(String ciudad, String nombreCarrera) {
+        EntityManager em = JPAController.getEntityManager();
+        @SuppressWarnings("unchecked")
+        List<Estudiante> result = em.createQuery("SELECT e " +
+                                                    "FROM estudiante e JOIN carrera c" +
+                                                    "WHERE e.ciudad LIKE :VarCiudad AND c.nombre LIKE :VarNombre")
+                .setParameter("VarCiudad", ciudad)
+                .setParameter("VarNombre", nombreCarrera)
+                .getResultList();
+        return result;
+    }
+
+    public List<Estudiante> getReporteCarreras(char genero) {
+        EntityManager em = JPAController.getEntityManager();
+        @SuppressWarnings("unchecked")
+        List<Estudiante> result = em.createQuery("SELECT c.nombre AS carrera, i.fechaInicio, i, esGraduado, e " +
+                                                    "FROM estudiante e NATURAL JOIN inscripcion i NATURAL JOIN  carrera c" +
+                                                    "ORDER BY c.nombre AND i.fechaInicio")
+                .setParameter("VarGenero", genero)
+                .getResultList();
+        return result;
+    }
+
 }
