@@ -13,7 +13,7 @@ public class Main {
 //        TODO:e) recuperar todos los estudiantes, en base a su género.
 //        TODO:g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia
 //        TODO: Generar un reporte de las carreras, que para cada carrera incluya información de los
-//              inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
-//              los años de manera cronológica
+//              inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y
+//              presentar los años de manera cronológica
     }
 }

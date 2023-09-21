@@ -14,6 +14,7 @@ public class Carrera {
     @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Inscripcion> inscripciones;
 
+    @Column
     private String nombre;
 
     public Carrera(){

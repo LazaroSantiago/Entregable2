@@ -10,11 +10,17 @@ public class Estudiante {
     @Id
     private int dni;
 
+    @Column
     private String nombre;
+    @Column
     private String apellido;
+    @Column
     private int edad;
+    @Column
     private char genero;
+    @Column
     private String ciudad;
+    @Column
     private int numeroLegajo;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, orphanRemoval = true)
