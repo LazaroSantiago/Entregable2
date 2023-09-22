@@ -9,9 +9,7 @@ public class ConnectionHelper {
     private static EntityManager entityManager;
     private static ConnectionHelper instance;
 
-    private ConnectionHelper() {
-
-    }
+    private ConnectionHelper() {}
 
     public static ConnectionHelper startConnection() {
         if (instance == null) {
@@ -27,6 +25,7 @@ public class ConnectionHelper {
 
         return entityManager;
     }
+
     public void closeConnection(){
         entityManager.close();
         emf.close();
