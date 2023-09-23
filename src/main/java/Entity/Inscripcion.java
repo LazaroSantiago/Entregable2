@@ -13,14 +13,14 @@ public class Inscripcion {
             CascadeType.MERGE
     })
     @JoinColumn(name = "legajo_estudiante")
-    Estudiante estudiante;
+    private Estudiante estudiante;
 
     @ManyToOne( cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinColumn(name = "id_carrera")
-    Carrera carrera;
+    private Carrera carrera;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
